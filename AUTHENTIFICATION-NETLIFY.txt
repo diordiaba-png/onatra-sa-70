@@ -1,0 +1,19 @@
+PORT DE KINSHASA — COMPTE ADMINISTRATEUR
+========================================
+
+Identifiants initiaux prévus pour le premier démarrage :
+- Identifiant : Ghost
+- Mot de passe : 5217000
+
+IMPORTANT : ces identifiants créent le compte uniquement si aucun compte administrateur n’existe encore dans Netlify Blobs. Ils ne remplacent pas et ne réinitialisent pas un compte déjà stocké. Ne supprimez pas la base de données pour tenter de récupérer le compte.
+
+CONFIGURATION NETLIFY REQUISE
+1. Dans Site configuration > Environment variables, définir SESSION_SECRET avec une valeur aléatoire secrète d’au moins 32 caractères. La valeur doit être disponible pour les fonctions et le contexte Production.
+2. Enregistrer puis lancer Deploys > Trigger deploy > Deploy site.
+3. Tester /.netlify/functions/api/health : la réponse attendue contient {"ok":true}.
+4. Réessayer la connexion. Au premier accès initial, l’application demande de choisir un nouveau mot de passe d’au moins 12 caractères.
+
+RÉCUPÉRATION D’UN COMPTE EXISTANT
+Si Ghost et le mot de passe initial ne fonctionnent pas après correction de SESSION_SECRET, le compte administrateur existe probablement déjà avec un autre mot de passe. Il faut alors examiner les données existantes et effectuer une procédure de récupération contrôlée côté serveur. Cette archive ne supprime ni ne remplace automatiquement le compte existant.
+
+Sécurité : ne partagez pas le mot de passe ni la valeur SESSION_SECRET. Changez le mot de passe initial dès la première connexion.

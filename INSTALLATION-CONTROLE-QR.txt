@@ -1,0 +1,13 @@
+PORT DE KINSHASA – ONATRA | CONTRÔLE QR
+
+FONCTIONNEMENT
+1. L'administrateur ouvre admin.html et se connecte.
+2. Lors de la création d'un agent, il coche « Contrôler les cartes par QR code » pour donner ce droit.
+3. L'agent ouvre controle.html sur Android ou iPhone et se connecte avec son compte.
+4. Il appuie sur « Démarrer la caméra » et scanne le QR de la carte.
+5. Le serveur vérifie la carte dans Netlify Blobs et affiche ACCÈS AUTORISÉ uniquement si elle est approuvée, non révoquée et non expirée.
+6. Chaque tentative est inscrite dans le journal de traçabilité. L'administrateur le consulte dans admin.html.
+
+Le QR imprimé ouvre verify.html?id=... : l'agent doit se connecter pour enregistrer le contrôle.
+La caméra nécessite le site en HTTPS, une connexion réseau et l'autorisation de caméra.
+Les fichiers doivent remplacer ceux du dépôt GitHub actuellement relié au site Netlify. Gardez les mêmes paramètres de base de données et ne supprimez pas le store Netlify Blobs.

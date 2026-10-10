@@ -1,0 +1,24 @@
+PORT DE KINSHASA — INSTALLATION GITHUB + NETLIFY (iPhone)
+
+OBJECTIF
+- Retirer l'ancien enregistrement administrateur uniquement si tu le demandes.
+- Créer ensuite un seul compte administrateur depuis /setup-admin.html.
+- Les cartes d'accès et les comptes agents sont conservés.
+
+ETAPES
+1. Fais une sauvegarde du dépôt GitHub avant de remplacer les fichiers.
+2. Téléverse le contenu de cette archive dans le dépôt GitHub déjà relié au site Netlify. Ne crée pas un nouveau site Netlify.
+3. Dans Netlify > Site configuration > Environment variables, définis SESSION_SECRET avec une valeur aléatoire secrète d'au moins 32 caractères, disponible pour les fonctions en Production.
+4. Si un ancien administrateur existe et que tu veux le remplacer, ajoute temporairement ADMIN_RESET_TOKEN avec une valeur aléatoire secrète d'au moins 32 caractères.
+5. Enregistre et redéploie. Attends que Netlify indique Published.
+6. Ouvre https://TON-SITE/setup-admin.html.
+7. Si un administrateur existe, saisis le jeton ADMIN_RESET_TOKEN et appuie sur « Supprimer l'ancien administrateur ». Cette opération supprime uniquement la clé admin; les cartes et agents sont conservés.
+8. Crée immédiatement le nouvel identifiant et un mot de passe d'au moins 12 caractères. Le serveur refuse une seconde création si un administrateur existe.
+9. Supprime ADMIN_RESET_TOKEN des variables Netlify et redéploie.
+10. Connecte-toi depuis /admin.html avec le compte nouvellement créé.
+
+SECURITE
+- Ne mets aucun secret dans GitHub.
+- Ne supprime pas le Netlify Blobs store.
+- Le compte n'est pas créé avec un identifiant/mot de passe par défaut.
+- Après configuration, /setup-admin.html ne peut pas créer d'autre administrateur tant que l'enregistrement admin existe.

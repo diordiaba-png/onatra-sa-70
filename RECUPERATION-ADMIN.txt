@@ -1,0 +1,29 @@
+PORT DE KINSHASA — RÉINITIALISATION CIBLÉE DE L'ADMINISTRATEUR
+================================================================
+
+Ce patch ajoute une page temporaire reset-admin.html et une route protégée.
+Il réinitialise uniquement le mot de passe de l'administrateur déjà présent dans
+Netlify Blobs; il ne crée pas un compte, ne change pas son identifiant et ne
+supprime aucune carte ni aucune autre donnée.
+
+ÉTAPES
+1. Déployer les fichiers de cette archive dans le site Netlify existant, sans
+   effacer les autres fichiers propres au projet. Les données Netlify Blobs
+   restent côté serveur.
+2. Dans Netlify > Site configuration > Environment variables, ajouter
+   ADMIN_RESET_TOKEN avec une valeur secrète aléatoire d'au moins 32 caractères.
+   Conserver SESSION_SECRET configuré pour les fonctions.
+3. Enregistrer puis lancer Deploys > Trigger deploy > Deploy site.
+4. Ouvrir https://VOTRE-SITE/reset-admin.html
+5. Saisir la valeur ADMIN_RESET_TOKEN, choisir un nouveau mot de passe d'au
+   moins 12 caractères, le confirmer, puis lancer la réinitialisation.
+6. Après confirmation de réussite, supprimer immédiatement ADMIN_RESET_TOKEN
+   des variables Netlify et redéployer.
+7. Se connecter à l'application avec l'identifiant administrateur existant et
+   le nouveau mot de passe.
+
+SÉCURITÉ
+- Ne partagez pas ADMIN_RESET_TOKEN ni le nouveau mot de passe.
+- Ne supprimez pas Netlify Blobs ou le store port-kinshasa-secure.
+- Si la route répond qu'aucun administrateur n'existe, elle n'a rien modifié.
+- Testez d'abord dans un environnement contrôlé avant utilisation opérationnelle.

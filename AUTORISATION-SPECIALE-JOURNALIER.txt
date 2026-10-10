@@ -1,0 +1,22 @@
+PORT DE KINSHASA – ONATRA
+AUTORISATION SPÉCIALE DES CARTES JOURNALIER
+
+Fonction ajoutée au projet :
+- Tableau de bord administrateur : section « Autorisations spéciales de cartes ».
+- Liste des cartes JOURNALIER présentes dans la base de données Netlify Blobs.
+- Pour une carte validée et non révoquée, l’administrateur indique un motif obligatoire et une heure de fin (par défaut 20:00).
+- L’autorisation est limitée à la date du jour, commence à 16:30 heure de Kinshasa et se termine à l’heure choisie.
+- L’administrateur peut retirer l’autorisation avant l’heure de fin.
+- Le contrôle QR refuse les cartes inconnues, en attente, expirées ou révoquées. Après 16:30, une carte JOURNALIER valide n’est acceptée que si sa dérogation est active.
+- Les contrôles utilisent le fuseau horaire Africa/Kinshasa. Avant 08:00, l’accès est refusé dans cette version.
+- Les autorisations et retraits sont inscrits au journal d’administration.
+
+INSTALLATION
+1. Conservez une copie du projet et ne supprimez pas la base Netlify Blobs.
+2. Remplacez les fichiers du dépôt GitHub par ceux de ce projet (en conservant les fichiers de configuration existants).
+3. Vérifiez que SESSION_SECRET est configuré dans Netlify avec au moins 32 caractères.
+4. Déclenchez le déploiement et attendez qu’il réussisse.
+5. Connectez-vous comme administrateur, ouvrez Administration, puis « Autorisations spéciales de cartes ».
+6. Vérifiez avec une carte JOURNALIER de test approuvée et non révoquée. Cette archive n’a pas été déployée sur le site de production.
+
+Important : les autorisations spéciales sont stockées dans l’objet carte existant. Aucune suppression ou réinitialisation des cartes/comptes n’est nécessaire.
